@@ -136,9 +136,5 @@ mvn spring-boot:run
 - [H2 Database](http://www.h2database.com/html/main.html)
 - [JPA / Hibernate](https://hibernate.org/)
 
-## Autor
-- Baseado no repositório do professor [Nelio Alves](https://github.com/acenelio).
-
----
 
 Se precisar de mais ajuda com o projeto, não hesite em perguntar!
