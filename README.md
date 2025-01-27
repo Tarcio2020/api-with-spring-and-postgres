@@ -116,12 +116,12 @@ spring.jpa.properties.hibernate.format_sql=true
 ## Como Executar o Projeto
 1. Clone o repositório:
 ```bash
-git clone https://github.com/acenelio/workshop-springboot2-jpa.git
+git clone https://github.com/Tarcio2020/api-with-spring-and-postgres
 ```
 
 2. Navegue até o diretório do projeto:
 ```bash
-cd workshop-springboot2-jpa
+cd salesSystem
 ```
 
 3. Execute o projeto com o Maven:
