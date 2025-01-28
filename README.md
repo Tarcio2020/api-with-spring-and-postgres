@@ -12,6 +12,9 @@ Este projeto é um sistema de exemplo que utiliza **Spring Boot** e **JPA/Hibern
 - Realizar tratamento de exceções
 
 ## Tecnologias Utilizadas
+
+![Tecnologias](https://servidor-estaticos-amber.vercel.app/primeira.png)
+
 - **Java 17**
 - **Spring Boot**
   - Spring Web
@@ -23,6 +26,8 @@ Este projeto é um sistema de exemplo que utiliza **Spring Boot** e **JPA/Hibern
 ## Estrutura do Projeto
 O projeto segue uma arquitetura em camadas:
 
+![Camadas](https://servidor-estaticos-amber.vercel.app/segunda.png)
+
 1. **Camada de Domínio (Domain):** Define as entidades e o modelo de negócio.
 2. **Camada de Repositório (Repository):** Responsável pela interação com o banco de dados.
 3. **Camada de Serviço (Service):** Contém a lógica de negócios.
@@ -30,12 +35,18 @@ O projeto segue uma arquitetura em camadas:
 
 ### Modelo de Domínio
 O modelo de domínio inclui as seguintes entidades:
+
+![Dominios](https://servidor-estaticos-amber.vercel.app/quarta.png)
+
 - **User**: Representa os usuários.
 - **Order**: Representa os pedidos dos usuários, com status.
 - **Category**: Representa categorias de produtos.
 - **Product**: Representa os produtos.
 - **OrderItem**: Relaciona pedidos e produtos com atributos adicionais (quantidade e preço).
 - **Payment**: Representa o pagamento de um pedido.
+
+  ![Estâncias](https://servidor-estaticos-amber.vercel.app/terceira.png)
+
 
 ## Configuração do Banco de Dados
 O projeto utiliza o banco de dados em memória **H2** para testes. As configurações estão nos arquivos `application.properties` e `application-test.properties`.
