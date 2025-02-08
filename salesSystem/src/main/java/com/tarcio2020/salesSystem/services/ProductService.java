@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tarcio2020.salesSystem.entities.Product;
-import com.tarcio2020.salesSystem.entities.User;
 import com.tarcio2020.salesSystem.repository.ProductRepository;
 
 @Service
