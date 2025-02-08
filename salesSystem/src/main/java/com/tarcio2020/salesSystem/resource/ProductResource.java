@@ -10,30 +10,32 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tarcio2020.salesSystem.entities.User;
-import com.tarcio2020.salesSystem.services.UserService;
+import com.tarcio2020.salesSystem.entities.Product;
+import com.tarcio2020.salesSystem.services.ProductService;
 
 @RestController
-@RequestMapping(value = "/users")
-public class UserResource {
+@RequestMapping(value = "/products")
+public class ProductResource {
+
 	
 	@Autowired
-	private UserService userService;
+	private ProductService productService;
 	
 	@GetMapping
-	public ResponseEntity<List<User>> findAll(){
-		List<User> list = userService.findAllUsers();
+	public ResponseEntity<List<Product>> findAll(){
+		List<Product> list = productService.findAllUsers();
 		return ResponseEntity.ok().body(list);		
 	}
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<User> findById(@PathVariable Long id) {
-		User obj = userService.findById(id);
+	public ResponseEntity<Product> findById(@PathVariable Long id) {
+		Product obj = productService.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> deleteById(@PathVariable Long id){
-		userService.deleteById(id);
+		productService.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
 }
+
