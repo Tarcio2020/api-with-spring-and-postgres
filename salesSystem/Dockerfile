@@ -1,14 +1,19 @@
-# Usar uma imagem base do OpenJDK
-FROM openjdk:17-jdk-alpine
+# Use uma imagem base com o JDK do OpenJDK 11
+FROM openjdk:11-jdk-slim
 
-# Configurar o diretório de trabalho no contêiner
+# Defina o diretório de trabalho dentro do contêiner
 WORKDIR /app
 
-# Copiar o arquivo JAR gerado pelo Maven/Gradle para o contêiner
-COPY target/your-spring-boot-app.jar app.jar
+# Copie o arquivo pom.xml e a pasta src para o diretório de trabalho
+COPY pom.xml .
+COPY src ./src
 
-# Expor a porta em que a aplicação Spring Boot irá rodar
-EXPOSE 8080
+# Execute o Maven para compilar e empacotar o aplicativo
+RUN apt-get update && apt-get install -y maven
+RUN mvn clean package
 
-# Comando para executar a aplicação
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Copie o arquivo JAR gerado para o diretório de trabalho
+COPY target/*.jar app.jar
+
+# Defina o comando de inicialização do contêiner
+CMD ["java", "-jar", "app.jar"]

@@ -23,4 +23,12 @@ public class OrderService {
 		Optional<Order> obj = orderRepository.findById(id);
 		return obj.get();
 	}
+	
+	public Order create(Order order) {
+		return orderRepository.save(order);
+	}
+	
+	public void deleteById(Long id) {
+		orderRepository.deleteById(id);
+	}
 }
