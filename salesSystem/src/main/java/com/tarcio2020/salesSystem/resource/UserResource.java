@@ -1,5 +1,6 @@
 package com.tarcio2020.salesSystem.resource;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +9,16 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.tarcio2020.salesSystem.entities.User;
 import com.tarcio2020.salesSystem.services.UserService;
+
+import jakarta.servlet.Servlet;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -25,7 +30,8 @@ public class UserResource {
 	@PostMapping
 	public ResponseEntity<User> create(@RequestBody User user) {
 		User obj = userService.create(user);
-		return ResponseEntity.ok().body(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).body(obj);
 	}
 	
 	@GetMapping
@@ -43,5 +49,11 @@ public class UserResource {
 	public ResponseEntity<Void> deleteById(@PathVariable Long id){
 		userService.deleteById(id);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User obj) {
+		obj = userService.update(id, obj);
+		return ResponseEntity.ok().body(obj);
 	}
 }
