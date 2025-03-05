@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.tarcio2020.salesSystem.entities.User;
 import com.tarcio2020.salesSystem.repository.UserRepository;
+import com.tarcio2020.salesSystem.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService {
@@ -21,7 +22,7 @@ public class UserService {
 
 	public User findById(Long id) {
 		Optional<User> obj = userRepository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 
 	public void deleteById(Long id) {
